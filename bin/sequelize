@@ -10,6 +10,10 @@ var argv    = yargs.argv;
 var _       = require('lodash');
 var helpers = require(path.resolve(__dirname, '..', 'lib', 'helpers'));
 
+process.on('SIGTERM', function() { console.log('SIGTERM ignored during migration run.'); });
+process.on('SIGHUP',  function() { console.log('SIGHUP ignored during migration run.');  });
+process.on('SIGINT',  function() { console.log('SIGINT ignored during migration run.');  });
+
 if ((args[0] === '-v') || (args[0] === '-V')) {
   args = ['version'];
 }
